@@ -5,7 +5,6 @@ npm-debug.log*
 
 # Dependency directories
 node_modules
-packages
 
 # Build generated files
 Dist
@@ -28,6 +27,9 @@ We use typescript all in except for taskrunner
 *.jsx
 *.d.ts
 !gulpfile.js
+!**/packages/wcm/**/*.*
+**/packages/wcm/task.d.ts
+**/packages/wcm/task.js
 
 # Exclude local certs and secrets
 *.pem
@@ -37,4 +39,6 @@ We use typescript all in except for taskrunner
 *.crt
 *.user
 
-/src/**/*.local.json
+**/*.local.json
+
+*.dev.manifest.ts
