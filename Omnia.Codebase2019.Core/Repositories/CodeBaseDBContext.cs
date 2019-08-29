@@ -18,7 +18,7 @@ namespace Omnia.Codebase2019.Core.Repositories
     {
         private ILogger<CodeBaseDBContext> Logger { get; }
 
-        public DbSet<OrderedBeerEntity> NavigationNodes { get; set; }
+        public DbSet<OrderedBeerEntity> OrderedBeers { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CodeBaseDBContext"/> class.

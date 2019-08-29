@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Omnia.Codebase2019.Core.Repositories;
 using Omnia.Codebase2019.Models;
 using Omnia.Fx.Contexts;
 using Omnia.Fx.Models.Users;
@@ -13,26 +15,40 @@ namespace Omnia.Codebase2019.Core.Services
     {
         private IOmniaContext OmniaContext { get; }
         private IUserService UserService { get; }
+        private IBeerRepository BeerRepository { get; }
+
         public BeerService(IOmniaContext omniaContext,
-                           IUserService userService)
+                           IUserService userService,
+                           IBeerRepository beerRepository)
         {
             this.OmniaContext = omniaContext;
             this.UserService = userService;
+            BeerRepository = beerRepository;
         }
 
-        public ValueTask<Dictionary<User, IList<BasicBeer>>> AllBeersOrderedAsync()
+        public async ValueTask<Dictionary<User, IList<BasicBeer>>> AllBeersOrderedAsync()
         {
-            throw new NotImplementedException();
+            Dictionary<User, IList<BasicBeer>> result = new Dictionary<User, IList<BasicBeer>>();
+
+            var repoResult = await this.BeerRepository.AllBeersOrderedAsync();
+            var group = await this.UserService.GetByIdsAsync(repoResult.Keys.ToList());
+
+            foreach (var key in repoResult.Keys)
+            {
+                result.Add(group.Users.First(x => x.Id == key), repoResult[key]);
+            }
+
+            return result;
         }
 
-        public ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(User user)
+        public ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            return this.BeerRepository.BeersOrderedByUserAsync(userId);
         }
 
         public ValueTask<BasicBeer> OrderAsync(BasicBeer beer)
         {
-            throw new NotImplementedException();
+            return this.BeerRepository.OrderAsync(beer, this.OmniaContext.Identity.UserId);
         }
     }
 }

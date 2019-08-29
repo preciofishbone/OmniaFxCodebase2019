@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Omnia.Codebase2019.Core.Entities;
 using Omnia.Codebase2019.Models;
 using Omnia.Fx.Models.Users;
 
@@ -9,26 +11,55 @@ namespace Omnia.Codebase2019.Core.Repositories
 {
     internal class BeerRepository : IBeerRepository
     {
-        private CodeBaseDBContext DbContext { get; }
+        private DbSet<OrderedBeerEntity> OrderedBeers { get; }
+        private CodeBaseDBContext DatabaseContext { get; }
 
         public BeerRepository(CodeBaseDBContext dbContext)
         {
-            DbContext = dbContext;
+            OrderedBeers = dbContext.OrderedBeers;
+            DatabaseContext = dbContext;
         }
 
-        public ValueTask<Dictionary<Guid, IList<BasicBeer>>> AllBeersOrderedAsync()
+        public async ValueTask<Dictionary<Guid, IList<BasicBeer>>> AllBeersOrderedAsync()
         {
-            throw new NotImplementedException();
+            Dictionary<Guid, IList<BasicBeer>> result = new Dictionary<Guid, IList<BasicBeer>>();
+
+            var allOrders = await this.OrderedBeers.ToListAsync();
+
+            foreach(var order in allOrders)
+            {
+                if (!result.ContainsKey(order.UserId))
+                {
+                    result.Add(order.UserId, new List<BasicBeer>());
+                }
+
+                result[order.UserId].Add(order.Beer);
+            }
+
+            return result;
         }
 
-        public ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(User userId)
+        public async ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(Guid userId)
         {
-            throw new NotImplementedException();
+
+            IList<BasicBeer> result = (await this.OrderedBeers.Where(x => x.UserId == userId).ToListAsync()).Select(x => x.Beer).ToList();
+
+            return result;
         }
 
-        public ValueTask<BasicBeer> OrderAsync(BasicBeer beer, Guid userId)
+        public async ValueTask<BasicBeer> OrderAsync(BasicBeer beer, Guid userId)
         {
-            throw new NotImplementedException();
+            var newOrder = new OrderedBeerEntity
+            {
+                Beer = beer,
+                UserId = userId
+            };
+
+            this.OrderedBeers.Add(newOrder);
+
+            await DatabaseContext.SaveChangesAsync();
+
+            return newOrder.Beer;
         }
     }
 }

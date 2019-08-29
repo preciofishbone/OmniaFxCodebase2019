@@ -15,7 +15,7 @@ namespace Omnia.Codebase2019.Core.Repositories
     {
         ValueTask<BasicBeer> OrderAsync(BasicBeer beer, Guid userId);
 
-        ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(User userId);
+        ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(Guid userId);
 
         ValueTask<Dictionary<Guid, IList<BasicBeer>>> AllBeersOrderedAsync();
     }
