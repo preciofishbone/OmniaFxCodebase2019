@@ -52,8 +52,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Omnia.Codebase2019.Core\Omnia.Codebase2019.Core.csproj" />
-    <ProjectReference Include="..\..\Omnia.Codebase2019.Models\Omnia.Codebase2019.Models.csproj" />
+    <ProjectReference Include="..\Omnia.Codebase2019.Core\Omnia.Codebase2019.Core.csproj" />
+    <ProjectReference Include="..\Omnia.Codebase2019.Models\Omnia.Codebase2019.Models.csproj" />
   </ItemGroup>
 
   <!--***************************************************************************************-->
