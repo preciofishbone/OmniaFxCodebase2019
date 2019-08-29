@@ -16,6 +16,9 @@ Composer
                 minChunks: 2
             }
         }
+    }).requestSqlDatabase({
+        //Specify your own unique id, later used as reference to the DB generated for you.
+        uniqueId: new Guid("f8debb44-be08-4ae2-9cf5-c1cebc839123")
     });
     
    
