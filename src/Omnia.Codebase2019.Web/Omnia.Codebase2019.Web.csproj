@@ -21,13 +21,15 @@
     <None Remove="**\*.jsx" />
     <None Remove="**\*.map" />
     <None Remove="wwwroot\omnia\**" />
+    <TypeScriptCompile Remove="client\core\services\BeerOrderingService.ts" />
+    <TypeScriptCompile Remove="client\models\BasicBeer.ts" />
+    <TypeScriptCompile Remove="client\models\index.ts" />
+    <TypeScriptCompile Remove="client\models\ManifestIds.ts" />
     <None Include="gulpfile.js" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="client\core\stores\" />
-    <Folder Include="client\core\services\" />
-    <Folder Include="client\models\" />
     <Folder Include="client\beer\" />
     <Folder Include="Controllers\" />
     <Folder Include="wwwroot\" />

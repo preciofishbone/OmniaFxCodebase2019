@@ -29,7 +29,7 @@ namespace Omnia.Codebase2019.Web.Controllers
 
         // GET: api/OrderBeer
         [HttpGet]
-        public async ValueTask<ApiResponse<Dictionary<User,IList<BasicBeer>>>> Get()
+        public async ValueTask<ApiResponse<Dictionary<Guid,IList<BasicBeer>>>> Get()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Omnia.Codebase2019.Web.Controllers
             catch (Exception ex)
             {
                 Logger.LogError(ex.Message);
-                return ApiUtils.CreateErrorResponse<Dictionary<User,IList<BasicBeer>>>(ex);
+                return ApiUtils.CreateErrorResponse<Dictionary<Guid,IList<BasicBeer>>>(ex);
             }
         }
 

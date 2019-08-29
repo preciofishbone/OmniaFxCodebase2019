@@ -26,17 +26,10 @@ namespace Omnia.Codebase2019.Core.Services
             BeerRepository = beerRepository;
         }
 
-        public async ValueTask<Dictionary<User, IList<BasicBeer>>> AllBeersOrderedAsync()
+        public async ValueTask<Dictionary<Guid, IList<BasicBeer>>> AllBeersOrderedAsync()
         {
-            Dictionary<User, IList<BasicBeer>> result = new Dictionary<User, IList<BasicBeer>>();
 
-            var repoResult = await this.BeerRepository.AllBeersOrderedAsync();
-            var group = await this.UserService.GetByIdsAsync(repoResult.Keys.ToList());
-
-            foreach (var key in repoResult.Keys)
-            {
-                result.Add(group.Users.First(x => x.Id == key), repoResult[key]);
-            }
+            var result = await this.BeerRepository.AllBeersOrderedAsync();
 
             return result;
         }

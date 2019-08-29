@@ -1,8 +1,9 @@
 import { Composer, DevelopmentEnvironment } from "@omnia/tooling/composers";
 import { Guid } from '@omnia/fx/models';
+import { CodeBaseService } from './client/models/ManifestIds';
 
 Composer
-    .registerManifest(new Guid("c79622bf-3341-4f2f-a8c6-579c2dc3fb5c"), "Omnia.Codebase2019")
+    .registerManifest(CodeBaseService.Id, "Omnia.Codebase2019")
     .registerService({ description: "Description of Omnia.Codebase2019" })
     .AsWebApp()
     .withBuildOptions({
