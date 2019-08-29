@@ -3,7 +3,7 @@ import { IHttpApiOperationResult, InstanceLifetimes, GuidValue, Guid, Enterprise
 import { CodeBaseService, BasicBeer } from '../../models';
 
 @Injectable({ lifetime: InstanceLifetimes.Transient })
-export class PageService {
+export class BeerService {
 
     @Inject<HttpClientConstructor>(HttpClient, { configPromise: HttpClient.createOmniaServiceRequestConfig(CodeBaseService.Id) })
     private httpClient: HttpClient;
