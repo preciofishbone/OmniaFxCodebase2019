@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Omnia.Codebase2019.Web", "Omnia.Codebase2019.Web\Omnia.Codebase2019.Web.csproj", "{EA6DDF8D-0248-4059-AD83-CF790835C686}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnia.Codebase2019.Core", "..\Omnia.Codebase2019.Core\Omnia.Codebase2019.Core.csproj", "{63606997-9369-44A2-BCC6-54534D4C1182}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnia.Codebase2019.Core", "Omnia.Codebase2019.Core\Omnia.Codebase2019.Core.csproj", "{63606997-9369-44A2-BCC6-54534D4C1182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnia.Codebase2019.Models", "..\Omnia.Codebase2019.Models\Omnia.Codebase2019.Models.csproj", "{E2785B51-A514-4A97-AF44-1E3B68DA583E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Omnia.Codebase2019.Models", "Omnia.Codebase2019.Models\Omnia.Codebase2019.Models.csproj", "{E2785B51-A514-4A97-AF44-1E3B68DA583E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
