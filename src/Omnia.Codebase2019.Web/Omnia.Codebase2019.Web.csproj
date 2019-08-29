@@ -28,7 +28,6 @@
     <Folder Include="client\core\stores\" />
     <Folder Include="client\core\services\" />
     <Folder Include="client\models\" />
-    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -42,11 +41,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="Omnia.Fx.NetCore.WebApp" Version="00.22.53-vnext">
       <IncludeAssets>all</IncludeAssets>
       <ExcludeAssets>contentFiles</ExcludeAssets>
       <PrivateAssets>contentFiles;analyzers</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Omnia.Codebase2019.Core\Omnia.Codebase2019.Core.csproj" />
+    <ProjectReference Include="..\..\Omnia.Codebase2019.Models\Omnia.Codebase2019.Models.csproj" />
   </ItemGroup>
 
   <!--***************************************************************************************-->
