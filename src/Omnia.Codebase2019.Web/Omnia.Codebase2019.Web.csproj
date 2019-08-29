@@ -28,6 +28,8 @@
     <Folder Include="client\core\stores\" />
     <Folder Include="client\core\services\" />
     <Folder Include="client\models\" />
+    <Folder Include="client\beer\" />
+    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
