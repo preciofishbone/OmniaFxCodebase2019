@@ -36,3 +36,5 @@ We use typescript all in except for taskrunner
 *.key
 *.crt
 *.user
+
+/src/**/*.local.json

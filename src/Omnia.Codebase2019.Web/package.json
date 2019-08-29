@@ -10,7 +10,8 @@
     "@omnia/fx-models": "0.22.53-vnext",
     "@omnia/fx-sp": "0.22.53-vnext",
     "@omnia/fx-spfx": "0.22.53-vnext",
-    "@omnia/tooling-vue": "0.22.53-vnext"
+    "@omnia/tooling-vue": "0.22.53-vnext",
+    "@omnia/wcm": "0.22.3-vnext"
   },
   "devDependencies": {
     "@types/jest": "^22.1.0",
