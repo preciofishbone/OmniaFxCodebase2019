@@ -26,7 +26,7 @@ export default class BeerComponent extends Vue implements IWebComponentInstance,
             this.availableBeers = avail;
         });
         this.beerService.getAllOrders().then(async (all) => {
-            
+
             let user = await this.omniaCtx.user;
             if (all[user.id]) {
                 this.orderedBeers = all[user.id];
@@ -52,30 +52,32 @@ export default class BeerComponent extends Vue implements IWebComponentInstance,
     render(h) {
         return (
             <div class={BeerComponentStyles.container}>
-                <div>
-                    <v-select
-                        box
-                        dark={this.omniaTheming.promoted.body.dark}
-                        item-value="id"
-                        item-text="brand"
-                        items={this.availableBeers}
-                        v-model={this.selectedBeer}
-                        label="Select Beer"
-                        return-object
-                        onChange={(o) => { console.dir(this.selectedBeer); }}>
-                    </v-select>
-
-                    <VBtn onClick={() => { this.orderBeer() }}>
-                        Order
+                <div> 
+                    <div class="d-inline-block" style="width: 300px;">
+                        <v-select
+                            dark={this.omniaTheming.promoted.body.dark}
+                            item-value="id"
+                            item-text="brand"
+                            items={this.availableBeers}
+                            v-model={this.selectedBeer}
+                            label="Select Beer"
+                            return-object
+                            onChange={(o) => { console.dir(this.selectedBeer); }}>
+                        </v-select>
+                    </div> 
+                    <div class="d-inline-block">
+                        <VBtn flat onClick={() => { this.orderBeer() }}>
+                            Order
                     </VBtn>
+                    </div>
                 </div>
                 <div>Ordered beers</div>
-                {  
-                        this.orderedBeers.map((beer) => {
-                            return <div>
-                                {beer.brand}
-                            </div>
-                        })
+                {
+                    this.orderedBeers.map((beer) => {
+                        return <div>
+                            {beer.brand}
+                        </div>
+                    })
                 }
             </div>
         )

@@ -53,9 +53,19 @@ namespace Omnia.Codebase2019.Core.Services
                 Brand = "Corona"
             });
 
+            beers.Add(new Lager
+            {
+                Brand = "Rignes"
+            });
+
             beers.Add(new PaleAle
             {
                 Brand = "Holy GrAle"
+            });
+
+            beers.Add(new PaleAle
+            {
+                Brand = "Sierra Nevada Pale Ale"
             });
 
             beers.Add(new IndiaPaleAle
@@ -66,6 +76,16 @@ namespace Omnia.Codebase2019.Core.Services
             beers.Add(new IndiaPaleAle
             {
                 Brand = "Punk IPA"
+            });
+
+            beers.Add(new IndiaPaleAle
+            {
+                Brand = "Sierra Nevada Torpedo Extra IPA"
+            });
+
+            beers.Add(new IndiaPaleAle
+            {
+                Brand = "Dogfish Head 60 Minute IPA"
             });
 
             return  beers;
