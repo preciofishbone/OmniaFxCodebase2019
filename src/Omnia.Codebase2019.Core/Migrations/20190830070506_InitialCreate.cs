@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Omnia.Codebase2019.Core.Migrations
@@ -11,12 +12,14 @@ namespace Omnia.Codebase2019.Core.Migrations
                 name: "OrderedBeers",
                 columns: table => new
                 {
+                    OrderId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<Guid>(nullable: false),
                     Beer = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderedBeers", x => x.UserId);
+                    table.PrimaryKey("PK_OrderedBeers", x => x.OrderId);
                 });
         }
 

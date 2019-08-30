@@ -10,7 +10,7 @@ using Omnia.Codebase2019.Core.Repositories;
 namespace Omnia.Codebase2019.Core.Migrations
 {
     [DbContext(typeof(CodeBaseDBContext))]
-    [Migration("20190829190004_InitialCreate")]
+    [Migration("20190830070506_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,12 +23,15 @@ namespace Omnia.Codebase2019.Core.Migrations
 
             modelBuilder.Entity("Omnia.Codebase2019.Core.Entities.OrderedBeerEntity", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Beer");
 
-                    b.HasKey("UserId");
+                    b.Property<Guid>("UserId");
+
+                    b.HasKey("OrderId");
 
                     b.ToTable("OrderedBeers");
                 });

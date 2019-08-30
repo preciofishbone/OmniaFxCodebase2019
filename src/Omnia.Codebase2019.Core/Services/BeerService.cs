@@ -43,5 +43,33 @@ namespace Omnia.Codebase2019.Core.Services
         {
             return this.BeerRepository.OrderAsync(beer, this.OmniaContext.Identity.UserId);
         }
+
+        public List<BasicBeer> GetAvailableBeers()
+        {
+            var beers = new List<BasicBeer>();
+
+            beers.Add(new Lager
+            {
+                Brand = "Corona"
+            });
+
+            beers.Add(new PaleAle
+            {
+                Brand = "Holy GrAle"
+            });
+
+            beers.Add(new IndiaPaleAle
+            {
+                Brand = "Anchor Steve"
+            });
+
+            beers.Add(new IndiaPaleAle
+            {
+                Brand = "Punk IPA"
+            });
+
+            return  beers;
+
+        }
     }
 }

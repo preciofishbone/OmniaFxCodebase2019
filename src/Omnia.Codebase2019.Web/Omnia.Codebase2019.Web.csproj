@@ -16,11 +16,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\omnia\**" />
+    <Content Remove="wwwroot\omnia\**" />
+    <EmbeddedResource Remove="wwwroot\omnia\**" />
     <None Remove="**\*.d.ts" />
     <None Remove="**\*.js" />
     <None Remove="**\*.jsx" />
     <None Remove="**\*.map" />
     <None Remove="wwwroot\omnia\**" />
+    <TypeScriptCompile Remove="wwwroot\omnia\**" />
+    <TypeScriptCompile Remove="client\beer\BeerComponentWithStore.tsx" />
     <TypeScriptCompile Remove="client\core\services\BeerService.ts" />
     <TypeScriptCompile Remove="client\models\BasicBeer.ts" />
     <TypeScriptCompile Remove="client\models\index.ts" />
@@ -30,8 +35,6 @@
 
   <ItemGroup>
     <Folder Include="client\core\stores\" />
-    <Folder Include="client\beer\" />
-    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

@@ -18,5 +18,7 @@ namespace Omnia.Codebase2019.Core.Services
         /// </summary>
         /// <returns>Dictionary of UserId and Orders</returns>
         ValueTask<Dictionary<Guid, IList<BasicBeer>>> AllBeersOrderedAsync();
+
+        List<BasicBeer> GetAvailableBeers();
     }
 }

@@ -14,22 +14,22 @@ using Omnia.Fx.Utilities;
 
 namespace Omnia.Codebase2019.Web.Controllers
 {
-    [Route("api/[controller]")]
+    
     [ApiController]
-    public class OrderBeerController : ControllerBase
+    public class BeerController : ControllerBase
     {
         private IBeerService BeerService { get; }
-        private ILogger<OrderBeerController> Logger { get; }
+        private ILogger<BeerController> Logger { get; }
 
-        public OrderBeerController(IBeerService beerService,
-                                   ILogger<OrderBeerController> logger)
+        public BeerController(IBeerService beerService,
+                                   ILogger<BeerController> logger)
         {
             BeerService = beerService;
             Logger = logger;
         }
 
         // GET: api/OrderBeer
-        [HttpGet]
+        [HttpGet, Route("api/orders")]
         public async ValueTask<ApiResponse<Dictionary<Guid,IList<BasicBeer>>>> Get()
         {
             try
@@ -45,7 +45,8 @@ namespace Omnia.Codebase2019.Web.Controllers
         }
 
         // GET: api/OrderBeer/5
-        [HttpGet("{userId}", Name = "Get")]
+        //[HttpGet("{userId}", Name = "Get")]
+        [HttpGet, Route("api/orders/{userId}")]
         public async ValueTask<ApiResponse<IList<BasicBeer>>> Get(Guid userId)
         {
             try
@@ -61,7 +62,7 @@ namespace Omnia.Codebase2019.Web.Controllers
         }
 
         // POST: api/OrderBeer
-        [HttpPost]
+        [HttpPost, Route("api/orders")]
         public async ValueTask<ApiResponse<BasicBeer>> Post([FromBody] BasicBeer beer)
         {
             try
@@ -73,6 +74,22 @@ namespace Omnia.Codebase2019.Web.Controllers
             {
                 Logger.LogError(ex.Message);
                 return ApiUtils.CreateErrorResponse<BasicBeer>(ex);
+            }
+        }
+
+        // GET: api/available
+        [HttpGet, Route("api/available")]
+        public async ValueTask<ApiResponse<List<BasicBeer>>> GetAvailableBeers()
+        {
+            try
+            {
+                var allBeers = BeerService.GetAvailableBeers();
+                return ApiUtils.CreateSuccessResponse(allBeers);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.Message);
+                return ApiUtils.CreateErrorResponse<List<BasicBeer>>(ex);
             }
         }
     }
