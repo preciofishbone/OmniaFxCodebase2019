@@ -6,7 +6,7 @@ import { BeerComponentStyles } from './BeerComponent.css';
 import { VBtn } from '@omnia/fx/ux/vuetify';
 import { BasicBeer, BeerType } from '../models';
 import { OmniaTheming } from '@omnia/fx/ux';
-import { BeerService } from '../core/services/BeerService';
+import { BeerService } from '../core/services';
 
 @Component
 export default class BeerComponent extends Vue implements IWebComponentInstance, IBeerComponent {

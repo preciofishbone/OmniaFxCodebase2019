@@ -27,6 +27,8 @@
     <TypeScriptCompile Remove="wwwroot\omnia\**" />
     <TypeScriptCompile Remove="client\beer\BeerComponentWithStore.tsx" />
     <TypeScriptCompile Remove="client\core\services\BeerService.ts" />
+    <TypeScriptCompile Remove="client\core\services\index.ts" />
+    <TypeScriptCompile Remove="client\core\stores\index.ts" />
     <TypeScriptCompile Remove="client\models\BasicBeer.ts" />
     <TypeScriptCompile Remove="client\models\index.ts" />
     <TypeScriptCompile Remove="client\models\ManifestIds.ts" />
@@ -34,7 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="client\core\stores\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -59,6 +60,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Omnia.Codebase2019.Core\Omnia.Codebase2019.Core.csproj" />
     <ProjectReference Include="..\Omnia.Codebase2019.Models\Omnia.Codebase2019.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="client\core\services\index.ts">
+      <SubType>Code</SubType>
+    </None>
   </ItemGroup>
 
   <!--***************************************************************************************-->

@@ -83,7 +83,7 @@ namespace Omnia.Codebase2019.Web.Controllers
         {
             try
             {
-                var allBeers = BeerService.GetAvailableBeers();
+                var allBeers = await BeerService.GetAvailableBeers();
                 return ApiUtils.CreateSuccessResponse(allBeers);
             }
             catch (Exception ex)

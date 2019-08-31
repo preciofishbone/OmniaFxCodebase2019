@@ -44,7 +44,7 @@ namespace Omnia.Codebase2019.Core.Services
             return this.BeerRepository.OrderAsync(beer, this.OmniaContext.Identity.UserId);
         }
 
-        public List<BasicBeer> GetAvailableBeers()
+        public ValueTask<List<BasicBeer>> GetAvailableBeers()
         {
             var beers = new List<BasicBeer>();
 
@@ -88,7 +88,7 @@ namespace Omnia.Codebase2019.Core.Services
                 Brand = "Dogfish Head 60 Minute IPA"
             });
 
-            return  beers;
+            return new ValueTask<List<BasicBeer>>(beers);
 
         }
     }

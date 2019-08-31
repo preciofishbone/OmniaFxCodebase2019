@@ -3,7 +3,7 @@
 //import { vueCustomElement, IWebComponentInstance, WebComponentBootstrapper, Localize, Inject } from "@omnia/fx";
 //import { IBeerComponent, BeerComponentData } from './IBeerComponent';
 //import { BeerComponentStyles } from './BeerComponent.css';
-//import { BeerStore } from '../core/stores/BeerStore';
+//import { BeerStore } from '../core/stores';
 //import { VBtn } from '@omnia/fx/ux/vuetify';
 //import { BasicBeer, BeerType } from '../models';
 //import { OmniaTheming } from '@omnia/fx/ux';
@@ -47,23 +47,26 @@
 
 //    render(h) {
 //        return (
+
 //            <div class={BeerComponentStyles.container}>
 //                <div>
-//                    <v-select
-//                        box
-//                        dark={this.omniaTheming.promoted.body.dark}
-//                        item-value="id"
-//                        item-text="brand"
-//                        items={this.beerStore.getters.getAvailable()}
-//                        v-model={this.selectedBeer}
-//                        label="Select Beer"
-//                        return-object
-//                        onChange={(o) => { console.dir(this.selectedBeer); }}>
-//                    </v-select>
-
-//                    <VBtn onClick={() => { this.orderBeer() }}>
-//                        Order
+//                    <div class="d-inline-block" style="width: 300px;">
+//                        <v-select
+//                            dark={this.omniaTheming.promoted.body.dark}
+//                            item-value="id"
+//                            item-text="brand"
+//                            items={this.beerStore.getters.getAvailable()}
+//                            v-model={this.selectedBeer}
+//                            label="Select Beer"
+//                            return-object
+//                            onChange={(o) => { console.dir(this.selectedBeer); }}>
+//                        </v-select>
+//                    </div>
+//                    <div class="d-inline-block">
+//                        <VBtn flat onClick={() => { this.orderBeer() }}>
+//                            Order
 //                    </VBtn>
+//                    </div>
 //                </div>
 //                <div>Ordered beers</div>
 //                {
