@@ -55,11 +55,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="Omnia.Fx.NetCore.WebApp" Version="00.22.53-vnext">
-      <IncludeAssets>all</IncludeAssets>
-      <ExcludeAssets>contentFiles</ExcludeAssets>
-      <PrivateAssets>contentFiles;analyzers</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Omnia.Fx.NetCore.WebApp" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
