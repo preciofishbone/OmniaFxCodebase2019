@@ -7,13 +7,13 @@ using System.Text;
 
 namespace Omnia.Codebase2019.Core.Entities
 {
-    internal class OrderedBeerEntity
+    internal class OrderedBikeEntity
     {
         [Key, Column(Order = 1)]
         public int OrderId { get; set; }
 
         public Guid UserId { get; set; }
 
-        public BasicBeer Beer { get; set; }
+        public BasicBike Bike { get; set; }
     }
 }

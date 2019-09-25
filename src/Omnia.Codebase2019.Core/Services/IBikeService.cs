@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Omnia.Codebase2019.Core.Services
 {
-    public interface IBeerService
+    public interface IBikeService
     {
-        ValueTask<BasicBeer> OrderAsync(BasicBeer beer);
+        ValueTask<BasicBike> OrderAsync(BasicBike bike);
 
-        ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(Guid userId);
+        ValueTask<IList<BasicBike>> BikesOrderedByUserAsync(Guid userId);
 
         /// <summary>
         /// Get orders for all users
         /// </summary>
         /// <returns>Dictionary of UserId and Orders</returns>
-        ValueTask<Dictionary<Guid, IList<BasicBeer>>> AllBeersOrderedAsync();
+        ValueTask<Dictionary<Guid, IList<BasicBike>>> AllBikesOrderedAsync();
 
-        ValueTask<List<BasicBeer>> GetAvailableBeers();
+        ValueTask<List<BasicBike>> GetAvailableBikes();
     }
 }

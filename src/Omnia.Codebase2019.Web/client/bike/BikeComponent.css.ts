@@ -1,9 +1,9 @@
 import { style, cssRule, cssRaw } from "typestyle";
 
 /**
- * Styles for the BeerComponent component
+ * Styles for the BikeComponent component
  */
-export const BeerComponentStyles ={
+export const BikeComponentStyles ={
     container:style({
         fontSize:22
     })

@@ -11,12 +11,12 @@ namespace Omnia.Codebase2019.Core.Repositories
     /// The repository used internally to interact with the DB
     /// (Used from services)
     /// </summary>
-    internal interface IBeerRepository
+    internal interface IBikeRepository
     {
-        ValueTask<BasicBeer> OrderAsync(BasicBeer beer, Guid userId);
+        ValueTask<BasicBike> OrderAsync(BasicBike bike, Guid userId);
 
-        ValueTask<IList<BasicBeer>> BeersOrderedByUserAsync(Guid userId);
+        ValueTask<IList<BasicBike>> BikesOrderedByUserAsync(Guid userId);
 
-        ValueTask<Dictionary<Guid, IList<BasicBeer>>> AllBeersOrderedAsync();
+        ValueTask<Dictionary<Guid, IList<BasicBike>>> AllBikesOrderedAsync();
     }
 }

@@ -13,10 +13,10 @@ namespace Omnia.Codebase2019.Core.Extensions
         public static IServiceCollection AddCodeBaseServices(this IServiceCollection services)
         {
             //Connect the interface to the repo implementation (Interface is internal as well as the implementation, i.e. repos are used from services to enable a good caching point)
-            services.AddScoped<IBeerRepository, BeerRepository>();
+            services.AddScoped<IBikeRepository, BikeRepository>();
 
             //Connect the interface to the service implementation (Interface is public, implementation is internal)
-            services.AddScoped<IBeerService, BeerService>();
+            services.AddScoped<IBikeService, BikeService>();
  
             return services;
         }

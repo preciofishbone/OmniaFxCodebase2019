@@ -1,35 +1,35 @@
 import Vue from 'vue';
 import { Component, Watch, Prop } from 'vue-property-decorator';
 import { vueCustomElement, IWebComponentInstance, WebComponentBootstrapper, Localize, Inject, OmniaContext } from "@omnia/fx";
-import { IBeerComponent, BeerComponentData } from './IBeerComponent';
-import { BeerComponentStyles } from './BeerComponent.css';
+import { IBikeComponent, BikeComponentData } from './IBikeComponent';
+import { BikeComponentStyles } from './BikeComponent.css';
 import { VBtn } from '@omnia/fx/ux/vuetify';
-import { BasicBeer, BeerType } from '../models';
+import { BasicBike, BikeType } from '../models';
 import { OmniaTheming } from '@omnia/fx/ux';
-import { BeerService } from '../core/services';
+import { BikeService } from '../core/services';
 
 @Component
-export default class BeerComponent extends Vue implements IWebComponentInstance, IBeerComponent {
+export default class BikeComponent extends Vue implements IWebComponentInstance, IBikeComponent {
 
     @Prop({ default: false }) required: boolean;
 
-    @Inject(BeerService) private beerService: BeerService;
+    @Inject(BikeService) private bikeService: BikeService;
     @Inject(OmniaTheming) private omniaTheming: OmniaTheming;
     @Inject(OmniaContext) private omniaCtx: OmniaContext;
 
-    private selectedBeer: BasicBeer;
-    private availableBeers: Array<BasicBeer> = [];
-    private orderedBeers: Array<BasicBeer> = [];
+    private selectedBike: BasicBike;
+    private availableBikes: Array<BasicBike> = [];
+    private orderedBikes: Array<BasicBike> = [];
 
     created() {
-        this.beerService.getAvailable().then((avail) => {
-            this.availableBeers = avail;
+        this.bikeService.getAvailable().then((avail) => {
+            this.availableBikes = avail;
         });
-        this.beerService.getAllOrders().then(async (all) => {
+        this.bikeService.getAllOrders().then(async (all) => {
 
             let user = await this.omniaCtx.user;
             if (all[user.id]) {
-                this.orderedBeers = all[user.id];
+                this.orderedBikes = all[user.id];
             }
 
         });
@@ -41,41 +41,41 @@ export default class BeerComponent extends Vue implements IWebComponentInstance,
             .registerElementInstance(this, this.$el);
     }
 
-    private orderBeer() {
+    private orderBike() {
         this
-            .beerService
-            .order(this.selectedBeer).then((orderedBeer) => {
-                this.orderedBeers.push(orderedBeer);
+            .bikeService
+            .order(this.selectedBike).then((orderedBike) => {
+                this.orderedBikes.push(orderedBike);
             });
     }
 
     render(h) {
         return (
-            <div class={BeerComponentStyles.container}>
+            <div class={BikeComponentStyles.container}>
                 <div> 
                     <div class="d-inline-block" style="width: 300px;">
                         <v-select
                             dark={this.omniaTheming.promoted.body.dark}
                             item-value="id"
                             item-text="brand"
-                            items={this.availableBeers}
-                            v-model={this.selectedBeer}
-                            label="Select Beer"
+                            items={this.availableBikes}
+                            v-model={this.selectedBike}
+                            label="Select a bike"
                             return-object
-                            onChange={(o) => { console.dir(this.selectedBeer); }}>
+                            onChange={(o) => { console.dir(this.selectedBike); }}>
                         </v-select>
                     </div> 
                     <div class="d-inline-block">
-                        <VBtn flat onClick={() => { this.orderBeer() }}>
+                        <VBtn flat onClick={() => { this.orderBike() }}>
                             Order
                     </VBtn>
                     </div>
                 </div>
-                <div>Ordered beers</div>
+                <div>Ordered bikess</div>
                 {
-                    this.orderedBeers.map((beer) => {
+                    this.orderedBikes.map((bike) => {
                         return <div>
-                            {beer.brand}
+                            {bike.brand}
                         </div>
                     })
                 }
@@ -85,5 +85,5 @@ export default class BeerComponent extends Vue implements IWebComponentInstance,
 }
 
 WebComponentBootstrapper.registerElement((manifest) => {
-    vueCustomElement(manifest.elementName, BeerComponent);
+    vueCustomElement(manifest.elementName, BikeComponent);
 });

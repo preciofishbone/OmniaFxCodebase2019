@@ -1,1 +1,1 @@
-﻿export * from './BeerStore';
+﻿export * from './BikeStore';

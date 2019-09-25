@@ -18,7 +18,7 @@ namespace Omnia.Codebase2019.Core.Repositories
     {
         private ILogger<CodeBaseDBContext> Logger { get; }
 
-        public DbSet<OrderedBeerEntity> OrderedBeers { get; set; }
+        public DbSet<OrderedBikeEntity> OrderedBikes { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CodeBaseDBContext"/> class.
@@ -49,10 +49,10 @@ namespace Omnia.Codebase2019.Core.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OrderedBeerEntity>()
-                            .Property(p => p.Beer)
+            modelBuilder.Entity<OrderedBikeEntity>()
+                            .Property(p => p.Bike)
                             .HasConversion(value => JsonConvert.SerializeObject(value),
-                            json => JsonConvert.DeserializeObject<BasicBeer>(json));
+                            json => JsonConvert.DeserializeObject<BasicBike>(json));
         }
     }
 }

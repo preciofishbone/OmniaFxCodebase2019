@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Omnia.Codebase2019.Models
 {
-    public class Lager : BasicBeer
+    public class BmxBike : BasicBike
     {
+        public BmxBike()
+        {
+            this.Type = BikeType.BMX;
+        }
     }
 }

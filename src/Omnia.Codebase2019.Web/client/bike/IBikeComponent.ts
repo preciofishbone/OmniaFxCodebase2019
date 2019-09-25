@@ -1,16 +1,16 @@
 import { TsxAllowUnknowProperties } from '@omnia/fx/ux'
 
-export interface BeerComponentData {
+export interface BikeComponentData {
     title: string;
 }
 
-/*@WebComponentInterface("codebase-beer")*/
-export interface IBeerComponent {
+/*@WebComponentInterface("codebase-bike")*/
+export interface IBikeComponent {
 
     required: boolean;
 
     /*@DomProperty*/
-    data?: BeerComponentData;
+    data?: BikeComponentData;
 }
 
 declare global {
@@ -20,7 +20,7 @@ declare global {
         interface ElementAttributesProperty { }
         interface IntrinsicElements {
             /*@WebComponent*/
-            "codebase-beer": TsxAllowUnknowProperties<IBeerComponent>
+            "codebase-bike": TsxAllowUnknowProperties<IBikeComponent>
         }
     }
 }
